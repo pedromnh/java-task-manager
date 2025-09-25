@@ -6,12 +6,14 @@ import com.pedromnh.java_task_manager.service.TaskService;
 import org.springframework.http.ResponseEntity;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.validation.constraints.FutureOrPresent;
 import java.time.LocalDate;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
