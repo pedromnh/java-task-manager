@@ -1,6 +1,8 @@
 package com.pedromnh.java_task_manager.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
@@ -10,12 +12,14 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title cannot be blank")
     private String title;
     private String description;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @FutureOrPresent(message = "Due date must be today or in the future")
     private LocalDate dueDate;
 
     // Constructors
