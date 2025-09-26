@@ -17,11 +17,13 @@ public class TaskService {
         this.repository = repository;
     }
 
-    public List<Task> getAll(Status status, String dueBefore) {
-        if (status != null) {
+    public List<Task> getAll(Status status, LocalDate dueBefore) {
+        if (status != null && dueBefore != null) {
+            return repository.findByStatusAndDueDateBefore(status, dueBefore);
+        } else if (status != null) {
             return repository.findByStatus(status);
         } else if (dueBefore != null) {
-            return repository.findByDueDateBefore(LocalDate.parse(dueBefore));
+            return repository.findByDueDateBefore(dueBefore);
         }
         return repository.findAll();
     }

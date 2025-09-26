@@ -10,4 +10,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository <Task, Long> {
     List<Task> findByStatus(Status status);
     List<Task> findByDueDateBefore(LocalDate dueDate);
+    List<Task> findByStatusAndDueDateBefore(Status status, LocalDate dueDate);
 }

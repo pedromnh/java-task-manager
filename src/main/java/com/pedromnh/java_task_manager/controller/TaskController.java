@@ -28,7 +28,7 @@ public class TaskController {
     public List<Task> getAllTasks(
             @RequestParam(required = false) Status status,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @FutureOrPresent LocalDate dueBefore) {
-        return service.getAll(status, dueBefore != null ? dueBefore.toString() : null);
+        return service.getAll(status, dueBefore != null ? LocalDate.parse(dueBefore.toString()) : null);
     }
 
     @GetMapping("/{id}")
